@@ -1,0 +1,23 @@
+# Keys
+<prefix>        ->  Ctrl + A
+<M>             ->  Alt
+
+# Closing
+C-D             -> Close a pane.
+
+# Splitting
+<M> \           ->  Split pane vertically
+<M> -           ->  Split pane horizontally
+
+# Pane movement
+<M> ArrowLeft   ->  Move to left pane.
+<M> ArrowRight  ->  Move to right pane.
+<M> ArrowUp     ->  Move to top pane.
+<M> ArrowDown   ->  Move to bottom pane.
+
+# Window movement
+<prefix> N      -> Move to next window.
+<prefix> P      -> Move to previous window.
+
+# Configuration
+<prefix> r      -> Reload configuration.
