@@ -85,7 +85,7 @@ fi
 # Packages installation
 echo "Installing packages..."
 hash telegram-desktop jetbrains-toolbox cmake code discord timeshift spotify && echo "All programs installed" ||
-if [[ $( paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord timeshift spotify --needed --noconfirm &>/dev/null ) ]];
+if [[ $( paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord timeshift spotify --needed &>/dev/null ) ]];
 then
     echo "All programs have been installed."
 else
