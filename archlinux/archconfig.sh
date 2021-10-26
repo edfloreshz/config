@@ -46,7 +46,7 @@ fi
 cd $HOME
 if [[ ! $( cat $HOME/.zshrc | grep gcl ) ]];
 then
-    curl -L https://raw.githubusercontent.com/edfloreshz/dotsy/main/scripts/.zshrc > .zshrc
+    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/zsh/.zshrc > .zshrc
 else
     echo "Zsh is already configured."
 fi
@@ -69,7 +69,7 @@ cd $HOME
 if [ ! -d $HOME/.vim/autoload ];
 then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    curl -L https://raw.githubusercontent.com/edfloreshz/vimconfig/main/.vimrc > .vimrc
+    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/vim/.vimrc > .vimrc
 else
     echo "VimPlug is already installed."
 fi
