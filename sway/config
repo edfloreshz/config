@@ -20,6 +20,11 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu wofi --show run --gtk-dark true
 
+### Gaps
+#
+gaps inner 10
+smart_gaps off
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -116,17 +121,23 @@ output DP-4 resolution 2560x1440 position -1440,0 transform 90
     bindsym $mod+Shift+Right move right
 #
 
+## Font:
+#
+
+font pango: IosevkaTerm Regular 14
+
 # Borders:
 #
-    set $cl_high #000000
-    set $cl_indi #d9d8d8
+    set $cl_high #eac448
+    set $cl_indi #eac448
     set $cl_back #231f20
-    set $cl_fore #d9d8d8
+    set $cl_fore #000000
+    set $cl_forw #ffffff
     set $cl_urge #ee2e24
 
 # Colors                    border   bg       text     indi     childborder
     client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
-    client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
+    client.focused_inactive $cl_back $cl_back $cl_forw $cl_back $cl_back
     client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
     client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
 
