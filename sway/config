@@ -22,7 +22,7 @@ set $menu wofi --show run --gtk-dark true
 
 ### Gaps
 #
-gaps inner 10
+gaps inner 20
 smart_gaps off
 
 ### Output configuration
@@ -138,7 +138,7 @@ font pango: IosevkaTerm Regular 14
 # Colors                    border   bg       text     indi     childborder
     client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
     client.focused_inactive $cl_back $cl_back $cl_forw $cl_back $cl_back
-    client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
+    client.unfocused        $cl_back $cl_back $cl_forw $cl_back $cl_back
     client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
 
 # Workspaces:
@@ -189,7 +189,7 @@ font pango: IosevkaTerm Regular 14
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+F floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
