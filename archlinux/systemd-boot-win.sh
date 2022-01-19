@@ -1,7 +1,7 @@
 #!/bin/sh
 
 getDevices() {
-    sudo fdisk -l 2>&1 | grep EFI | grep -o "^\S*" | tail -2
+    sudo fdisk -l 2>&1 | grep EFI | grep -o "^\S*" | tail -3
 }
 
 echo "Select your Windows EFI partition:"
@@ -44,8 +44,8 @@ if [ ! -d /mnt/win ] || [ ! -d /mnt/lnx ]
 then
     sudo mkdir /mnt/{win,lnx}
 fi
-sudo mount /mnt/win $windows
-sudo mount /mnt/lnx $linux
+sudo mount $windows /mnt/win
+sudo mount $linux /mnt/lnx
 sudo cp -R /mnt/win/EFI/Microsoft /mnt/lnx/EFI
 
 echo Done! Now you can reboot...
