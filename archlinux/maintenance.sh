@@ -13,7 +13,7 @@ OPTIONS=(1 "List orphan packages"
     4 "List failed services"
     5 "Open kernel journal"
     6 "Full system upgrade"    
-    7 "Exit")
+)
 
 while CHOICE=$(dialog --clear \
         --backtitle "$BACKTITLE" \
@@ -39,23 +39,23 @@ do
             echo "Orphans removed."
             ;;
         3)
-	    echo "$(du -sh ~/.cache/) will be removed"
-	    sudo rm -rf ~/.cache/*
-            clear
-	    echo "Cache removed."
+	        echo "$(du -sh ~/.cache/) will be removed"
+	        read -s -n 1 -p "Press any key to continue..."
+            sudo rm -rf ~/.cache/*
+	        echo "Cache removed."
             ;;
         4)
             systemctl --failed
-	    ;;
+    	    ;;
         5)
             sudo journalctl -p 3 -xb
             ;;
-	6)
-	    sudo pacman -Syu
-	    ;;	   	    
-	7)
-	    break
-	    ;;
+	    6)
+	        sudo pacman -Syu
+	        ;;	   	    
+	    *)
+	        break
+	        ;;
     esac
     read -s -n 1 -p "Press any key to continue . . ."
 done
