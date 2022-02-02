@@ -1,111 +1,101 @@
 # Arch Linux Configuration Script
 # Author: Eduardo Flores <edfloreshz@gmail.com>
 
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="Arch Linux Configuration Script"
+TITLE="Configuration Script"
+MENU="Select an option..."
 
-# Check if running from Arch based distro.
-if [[ ! $(which pacman) ]];
-then
-  echo "This script is designed for Arch based distros."
-  exit
-fi
+OPTIONS=(
+    1 "Install Paru"
+    2 "Configure Zsh"
+    3 "Configure Vim"
+    4 "Install developer tools"
+    5 "Install programs"
+    6 "Place dotfiles"
+)
 
-# Arch update
-#echo "Checking for updates..."
-#if [[ $(checkupdates) ]];
-#then
-#    echo "Updates found, updating..."
-#    sudo pacman -Syu --noconfirm
-#    echo "System updated."
-#else
-#    echo "System already up to date."
-#fi
+while CHOICE=$(dialog --clear --backtitle "$BACKTITLE" --title "$TITLE" \
+        --menu "$MENU" $HEIGHT $WIDTH $CHOICE_HEIGHT "${OPTIONS[@]}" \
+        2>&1 >/dev/tty)
+clear
+do
+    case $CHOICE in
+        1) # Paru installation
+            if ! type paru 2>&1 1>/dev/null
+            then
+                sudo pacman -S --needed --noconfirm base-devel git
+                git clone https://aur.archlinux.org/paru.git
+                cd paru
+                makepkg -si
+                cd ..
+                rm -rf paru
+                echo "Paru installed"
+            else
+                echo "Paru is already installed."
+            fi
+            ;;
+        2) # Zsh installation and configuration
+            hash zsh &>/dev/null && echo "Zsh installed." || paru -S zsh --needed --noconfirm &>/dev/null  
+            # Ohmyzsh configuration
+            if [ ! -d $HOME/.oh-my-zsh ]
+            then
+                sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+                echo "Ohmyzsh installed"
+            else
+                echo "Ohmyzsh is already installed."
+            fi
+            # Zsh configuration
+            cd $HOME
+            if [[ ! $( cat $HOME/.zshrc | grep gcl ) ]];
+            then
+                curl -L https://raw.githubusercontent.com/edfloreshz/dotfiles/main/.zshrc > .zshrc
+                    echo "Zsh configured"
+                else
+                    echo "Zsh is already configured."
+            fi
+            ;;
+        3) # Install and configure Vim
+            hash vim &>/dev/null && echo "Vim installed" || paru -S vim --needed --noconfirm &>/dev/null
+            cd $HOME
+            if [ ! -d $HOME/.vim/autoload ];
+            then
+                curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            else
+                echo "VimPlug is already installed."
+            fi
 
-# Paru installation
-if ! type paru 2>&1 1>/dev/null
-then
-    sudo pacman -S --needed --noconfirm base-devel git
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si
-    cd ..
-    rm -rf paru
-    echo "Paru installed"
-else
-    echo "Paru is already installed."
-fi
-
-read -p "Press Enter to continue" </dev/tty
-
-# Zsh and Ohmyzsh installation
-if [ ! -d $HOME/.oh-my-zsh ]
-then
-    paru -S zsh --needed --noconfirm
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    echo "Ohmyzsh installed"
-else
-    echo "Ohmyzsh is already installed."
-fi
-
-read -p "Press Enter to continue" </dev/tty
-
-# Zsh configuration
-cd $HOME
-if [[ ! $( cat $HOME/.zshrc | grep gcl ) ]];
-then
-    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/zsh/.zshrc > .zshrc
-    echo "Zsh now configured"
-else
-    echo "Zsh is already configured."
-fi
-
-read -p "Press Enter to continue" </dev/tty
-
-# Developer tools
-hash go clang cmake rustc &>/dev/null && echo "Developer tools already installed." ||
-if [ $( paru -S go clang cmake --needed ) ];
-then
-  echo "Installed developer tools."
-else
-  echo "Some developer tools failed to install."
-fi
-
-read -p "Press Enter to continue" </dev/tty
-# Rust
-if ! type cargo 2>&1 1>/dev/null
-then
-    echo "Installing Rust..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    echo "Installed Rust."
-else
-    echo "Rust is already installed"
-fi
-
-
-read -p "Press Enter to continue" </dev/tty
-# Vim configuration
-cd $HOME
-
-if [ ! -d $HOME/.vim/autoload ];
-then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/vim/.vimrc > .vimrc
-else
-    echo "VimPlug is already installed."
-fi
-
-read -p "Press Enter to continue" </dev/tty
-if [ ! -d $HOME/.vim/plugged ]
-then
-    vim +PlugInstall +qall
-    cd ~/.vim/plugged/youcompleteme
-    ./install.py --clang-completer --system-libclang --rust-completer --go-completer
-else
-    echo "Vim plugins are already installed"
-fi
-
-read -p "Press Enter to continue" </dev/tty
-# Packages installation
-echo "Installing packages..."
-hash telegram-desktop jetbrains-toolbox cmake code discord timeshift spotify &>/dev/null && echo "All programs installed" || paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord timeshift spotify --needed
-
-read -p "Press Enter to continue" </dev/tty
+            curl -L https://raw.githubusercontent.com/edfloreshz/dotfiles/main/.vimrc > .vimrc
+            if [ ! -d $HOME/.vim/plugged ]
+            then
+                vim +PlugInstall +qall
+                cd ~/.vim/plugged/youcompleteme
+                ./install.py --clang-completer --system-libclang --rust-completer --go-completer
+            else
+                echo "Vim plugins are already installed"
+            fi
+            ;;
+        4) # Install developer tools
+            hash go &>/dev/null && echo "Go is already installed" || paru -S go --noconfirm
+            hash clang &>/dev/null && echo "Clang is already installed" || paru -S clang --noconfirm
+            hash cmake &>/dev/null && echo "Cmake is already installed" || paru -S cmake --noconfirm
+            hash cargo && echo "Rust is already installed" || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+            ;;
+        5) # Install programs
+            hash telegram-desktop jetbrains-toolbox code discord &>/dev/null && echo "All programs installed" || paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord --needed
+            ;;
+        6) # Place dotfiles
+            git clone https://github.com/edfloreshz/dotfiles
+            cd dotfiles
+            chmod 755 place.sh 
+            ./place.sh 
+            cd .. && rm -rf dotfiles
+            ;;
+        *)
+            break
+            ;;
+    esac
+    read -s -n 1 -p "Press any key to continue..."
+done
