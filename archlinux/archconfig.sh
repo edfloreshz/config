@@ -84,7 +84,7 @@ do
             hash cargo && echo "Rust is already installed" || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
             ;;
         5) # Install programs
-            hash telegram-desktop jetbrains-toolbox code discord &>/dev/null && echo "All programs installed" || paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord --needed
+            hash telegram-desktop jetbrains-toolbox code discord alacritty fish bat exa nvim tmux gh &>/dev/null && echo "All programs installed" || paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord alacritty fish bat exa neovim tmux github-cli --needed
             ;;
         6) # Place dotfiles
             git clone https://github.com/edfloreshz/dotfiles
