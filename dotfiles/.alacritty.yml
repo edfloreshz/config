@@ -1,0 +1,62 @@
+live_config_reload: true
+
+selection:
+  save_to_clipboard: true
+
+window:
+  dimensions:
+    columns: 105
+    lines: 22
+  opacity: 0.95
+font:
+  normal:
+    family: Iosevka Term
+    style: Regular
+  bold:
+    family: Iosevka Term
+    style: Bold
+
+  italic:
+    family: Iosevka Term 
+    style: Italic
+
+  bold_italic:
+    family: Iosevka Term
+    style: Bold Italic
+
+  size: 12.0
+
+  offset:
+    x: 1
+    y: 1
+
+cursor:
+  style: Block
+
+shell:
+  program: /usr/bin/fish
+
+launcher:
+  program: xdg-open
+  args: []
+
+mouse_bindings:
+  - { mouse: Middle, action: Copy }
+  - { mouse: Right, action: Paste }
+
+key_bindings:
+  - { key: V, mods: Alt,        action: Paste             }
+  - { key: C, mods: Alt,        action: Copy              }
+  - { key: C, mods: Control|Shift,  chars: "\x03"             }
+  - { key: K, mods: Control,        action: ClearHistory      }
+  - { key: N, mods: Control,        action: SpawnNewInstance  }
+  - { key: W, mods: Control,        action: Quit              }
+  - { key: Q, mods: Control,        action: Quit              }
+  - { key: K, mods: Control,        chars: "\x0c"             }
+
+  - { key: F,              mods: Control, mode: ~Search,    action: SearchForward    }
+  - { key: B,              mods: Control, mode: ~Search,    action: SearchBackward   }
+  - { key: Plus,           mods: Control,                   action: IncreaseFontSize }
+  - { key: NumpadAdd,      mods: Control,                   action: IncreaseFontSize }
+  - { key: Minus,          mods: Control,                   action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control,                   action: DecreaseFontSize }

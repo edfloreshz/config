@@ -1,12 +1,7 @@
 # Arch Linux Configuration Script
 # Author: Eduardo Flores <edfloreshz@gmail.com>
 
-if ! command -v dialog &> /dev/null
-then
-    echo "Dialog could not be found, installing..."
-    sudo pacman -S dialog --noconfirm
-    echo "Dialog installed, starting script..."
-fi
+pacman -S dialog --noconfirm --needed
 
 HEIGHT=15
 WIDTH=40
@@ -17,14 +12,14 @@ MENU="Select an option..."
 
 OPTIONS=(
     1 "Install Paru"
-    2 "Configure Zsh"
-    3 "Configure Vim"
-    4 "Install developer tools"
-    5 "Install programs"
-    6 "Place dotfiles"
+    2 "Install developer tools"
+    3 "Install programs"
+    4 "Install emoji"
+    5 "Place dotfiles"
+    6 "Maintenance"
 )
 
-while CHOICE=$(dialog --clear --backtitle "$BACKTITLE" --title "$TITLE" \
+while CHOICE=$(dialog --clear --cancel-label "Exit" --backtitle "$BACKTITLE" --title "$TITLE" \
         --menu "$MENU" $HEIGHT $WIDTH $CHOICE_HEIGHT "${OPTIONS[@]}" \
         2>&1 >/dev/tty)
 clear
@@ -44,65 +39,75 @@ do
                 echo "Paru is already installed."
             fi
             ;;
-        2) # Zsh installation and configuration
-            hash zsh &>/dev/null && echo "Zsh installed." || paru -S zsh --needed --noconfirm &>/dev/null  
-            # Ohmyzsh configuration
-            if [ ! -d $HOME/.oh-my-zsh ]
-            then
-                sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-                echo "Ohmyzsh installed"
-            else
-                echo "Ohmyzsh is already installed."
-            fi
-            # Zsh configuration
-            cd $HOME
-            if [[ ! $( cat $HOME/.zshrc | grep gcl ) ]];
-            then
-                curl -L https://raw.githubusercontent.com/edfloreshz/dotfiles/main/.zshrc > .zshrc
-                    echo "Zsh configured"
-                else
-                    echo "Zsh is already configured."
-            fi
-            ;;
-        3) # Install and configure Vim
-            hash vim &>/dev/null && echo "Vim installed" || paru -S vim --needed --noconfirm &>/dev/null
-            cd $HOME
-            if [ ! -d $HOME/.vim/autoload ];
-            then
-                curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-            else
-                echo "VimPlug is already installed."
-            fi
-
-            curl -L https://raw.githubusercontent.com/edfloreshz/dotfiles/main/.vimrc > .vimrc
-            if [ ! -d $HOME/.vim/plugged ]
-            then
-                vim +PlugInstall +qall
-                cd ~/.vim/plugged/youcompleteme
-                ./install.py --clang-completer --system-libclang --rust-completer --go-completer
-            else
-                echo "Vim plugins are already installed"
-            fi
-            ;;
-        4) # Install developer tools
-            hash go &>/dev/null && echo "Go is already installed" || paru -S go --noconfirm
-            hash clang &>/dev/null && echo "Clang is already installed" || paru -S clang --noconfirm
-            hash cmake &>/dev/null && echo "Cmake is already installed" || paru -S cmake --noconfirm
+        2) # Install developer tools
             hash cargo && echo "Rust is already installed" || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+            hash dm && echo "Devmode is already installed" || cargo install devmode
             ;;
-        5) # Install programs
-            hash telegram-desktop jetbrains-toolbox code discord alacritty fish bat exa nvim tmux gh &>/dev/null && echo "All programs installed" || paru -S telegram-desktop jetbrains-toolbox cmake visual-studio-code-bin discord alacritty fish bat exa neovim tmux github-cli --needed
+        3) # Install programs
+            paru -S jetbrains-toolbox visual-studio-code-bin alacritty fish bat exa neovim github-cli --needed --noconfirm
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            flatpak install flathub de.haeckerfelix.Fragments org.telegram.desktop com.discordapp.Discord com.valvesoftware.Steam org.videolan.VLC com.obsproject.Studio org.mozilla.Thunderbird com.slack.Slack io.github.mimbrero.WhatsAppDesktop com.getpostman.Postman org.kde.krita com.mongodb.Compass org.gnome.Builder com.rafaelmardojai.Blanket re.sonny.Commit io.bassi.Amberol com.rafaelmardojai.SharePreview dev.edfloreshz.Done org.gnome.Fractal org.gnome.Polari org.gnome.TextEditor org.gnome.design.IconLibrary org.gnome.design.Emblem org.gnome.gitlab.YaLTeR.VideoTrimmer org.kde.neochat
+            echo "All programs installed"
             ;;
-        6) # Place dotfiles
+        4) # Install emoji
+            set -e
+            if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
+            echo "Setting up Noto Emoji font..."
+            # 1 - install  noto-fonts-emoji package
+            pacman -S noto-fonts-emoji --needed
+            pacman -S powerline-fonts --needed
+            # 2 - add font config to /etc/fonts/conf.d/01-notosans.conf
+            echo "<?xml version="1.0"?>
+            <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+            <fontconfig>
+            <alias>
+            <family>sans-serif</family>
+            <prefer>
+                <family>Noto Sans</family>
+                <family>Noto Color Emoji</family>
+                <family>Noto Emoji</family>
+                <family>DejaVu Sans</family>
+            </prefer>
+            </alias>
+
+            <alias>
+            <family>serif</family>
+            <prefer>
+                <family>Noto Serif</family>
+                <family>Noto Color Emoji</family>
+                <family>Noto Emoji</family>
+                <family>DejaVu Serif</family>
+            </prefer>
+            </alias>
+
+            <alias>
+            <family>monospace</family>
+            <prefer>
+                <family>Noto Mono</family>
+                <family>Noto Color Emoji</family>
+                <family>Noto Emoji</family>
+                <family>DejaVu Sans Mono</family>
+            </prefer>
+            </alias>
+            </fontconfig>
+
+            " > /etc/fonts/local.conf
+            # 3 - update font cache via fc-cache
+            fc-cache
+            echo "Emoji installed."
+            ;;
+        5) # Place dotfiles
             git clone https://github.com/edfloreshz/dotfiles
             cd dotfiles
             chmod 755 place.sh 
             ./place.sh 
             cd .. && rm -rf dotfiles
             ;;
+        6) # Maintenance
+            ./maintenance.sh
+            ;;
         *)
             break
             ;;
     esac
-    read -s -n 1 -p "Press any key to continue..."
 done

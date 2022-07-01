@@ -16,6 +16,7 @@ OPTIONS=(1 "List orphan packages"
 )
 
 while CHOICE=$(dialog --clear \
+        --cancel-label "Exit"
         --backtitle "$BACKTITLE" \
         --title "$TITLE" \
         --menu "$MENU" \
@@ -57,5 +58,4 @@ do
 	        break
 	        ;;
     esac
-    read -s -n 1 -p "Press any key to continue . . ."
 done
