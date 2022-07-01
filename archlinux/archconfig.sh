@@ -48,7 +48,7 @@ do
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak install flathub de.haeckerfelix.Fragments org.telegram.desktop com.discordapp.Discord com.valvesoftware.Steam org.videolan.VLC com.obsproject.Studio org.mozilla.Thunderbird com.slack.Slack io.github.mimbrero.WhatsAppDesktop com.getpostman.Postman org.kde.krita com.mongodb.Compass org.gnome.Builder com.rafaelmardojai.Blanket re.sonny.Commit io.bassi.Amberol com.rafaelmardojai.SharePreview dev.edfloreshz.Done org.gnome.Fractal org.gnome.Polari org.gnome.TextEditor org.gnome.design.IconLibrary org.gnome.design.Emblem org.gnome.gitlab.YaLTeR.VideoTrimmer org.kde.neochat
             echo "All programs installed"
-            ;;
+	    ;;
         4) # Install emoji
             set -e
             if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
@@ -97,8 +97,7 @@ do
             echo "Emoji installed."
             ;;
         5) # Place dotfiles
-            git clone https://github.com/edfloreshz/dotfiles
-            cd dotfiles
+            cd ../dotfiles
             chmod 755 place.sh 
             ./place.sh 
             cd .. && rm -rf dotfiles
@@ -110,4 +109,5 @@ do
             break
             ;;
     esac
+    read -s -n 1 -p "Press any key to continue..."
 done
