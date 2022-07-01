@@ -16,7 +16,6 @@ OPTIONS=(1 "List orphan packages"
 )
 
 while CHOICE=$(dialog --clear \
-        --cancel-label "Exit"
         --backtitle "$BACKTITLE" \
         --title "$TITLE" \
         --menu "$MENU" \
