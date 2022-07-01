@@ -1,6 +1,13 @@
 # Arch Linux Configuration Script
 # Author: Eduardo Flores <edfloreshz@gmail.com>
 
+if ! command -v dialog &> /dev/null
+then
+    echo "Dialog could not be found, installing..."
+    sudo pacman -S dialog --noconfirm
+    echo "Dialog installed, starting script..."
+fi
+
 HEIGHT=15
 WIDTH=40
 CHOICE_HEIGHT=4
