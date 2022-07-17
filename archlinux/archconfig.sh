@@ -46,7 +46,7 @@ do
         3) # Install programs
             paru -S jetbrains-toolbox visual-studio-code-bin alacritty fish bat exa neovim github-cli --needed --noconfirm
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            flatpak install flathub de.haeckerfelix.Fragments org.telegram.desktop com.discordapp.Discord com.valvesoftware.Steam org.videolan.VLC com.obsproject.Studio org.mozilla.Thunderbird com.slack.Slack io.github.mimbrero.WhatsAppDesktop com.getpostman.Postman org.kde.krita com.mongodb.Compass org.gnome.Builder com.rafaelmardojai.Blanket re.sonny.Commit io.bassi.Amberol com.rafaelmardojai.SharePreview dev.edfloreshz.Done org.gnome.Fractal org.gnome.Polari org.gnome.TextEditor org.gnome.design.IconLibrary org.gnome.design.Emblem org.gnome.gitlab.YaLTeR.VideoTrimmer org.kde.neochat
+            flatpak install flathub de.haeckerfelix.Fragments org.telegram.desktop com.discordapp.Discord com.valvesoftware.Steam org.videolan.VLC com.obsproject.Studio org.mozilla.Thunderbird com.slack.Slack io.github.mimbrero.WhatsAppDesktop com.getpostman.Postman org.kde.krita com.mongodb.Compass org.gnome.Builder com.rafaelmardojai.Blanket re.sonny.Commit io.bassi.Amberol com.rafaelmardojai.SharePreview dev.edfloreshz.Done org.gnome.Builder org.gnome.Fractal org.gnome.Polari org.gnome.TextEditor org.gnome.design.IconLibrary org.gnome.design.Emblem org.gnome.gitlab.YaLTeR.VideoTrimmer org.kde.neochat io.github.mimbrero.WhatsAppDesktop sh.cider.Cider
             echo "All programs installed"
 	    ;;
         4) # Install emoji
