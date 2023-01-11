@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 getDevices() {
     sudo fdisk -l 2>&1 | grep EFI | grep -o "^\S*" | tail -3
