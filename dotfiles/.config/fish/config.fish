@@ -1,7 +1,10 @@
 abbr -a e hx
 abbr -a o xdg-open
-abbr -a cg cargo
-abbr -a c clear
+abbr -a c cargo
+abbr -a cr cargo run
+abbr -a cb cargo build
+abbr -a ct cargo test
+abbr -a cl clear
 abbr -a ff freshfetch
 abbr -a g git
 abbr -a gs git status
