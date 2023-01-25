@@ -7,6 +7,6 @@ wget https://github.com/be5invis/Iosevka/releases/download/v$RELEASE/ttf-iosevka
 unzip \*.zip
 
 sudo mkdir /usr/local/share/fonts/iosevka-font
-sudo mv *.ttf /usr/local/share/fonts/iosevka-font/.
+y | sudo mv --force *.ttf /usr/local/share/fonts/iosevka-font/.
 
 sudo fc-cache -fv
