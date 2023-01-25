@@ -1,4 +1,4 @@
-RELEASE="15.5.2"
+RELEASE="17.1.0"
 mkdir /tmp/iosevka-font/$RELEASE
 cd /tmp/iosevka-font/$RELEASE
 
