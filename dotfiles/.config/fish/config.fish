@@ -32,12 +32,17 @@ else if command -v pacman > /dev/null
     abbr -a r sudo pacman -R
     abbr -a k sudo pacman -Rscn
     abbr -a u sudo pacman -Syu
-else
+else if command -v apt > /dev/null
     abbr -a i sudo apt install
     abbr -a r sudo apt remove
     abbr -a k sudo apt remove --purge
     abbr -a f sudo apt update
     abbr -a u sudo apt upgrade
+else
+    abbr -a i sudo dnf install
+    abbr -a r sudo dnf remove
+    abbr -a f sudo dnf update
+    abbr -a u sudo dnf upgrade
 end
 
 if command -v exa > /dev/null
