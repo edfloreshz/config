@@ -9,3 +9,14 @@
 # Configuration Repository
 
 Configuration repositories for Arch Linux, KDE Plasma, Oh My Zsh, Vim, Tmux and Alacritty.
+
+# Commands
+Install Iosevka Term:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/linux/iosevka.sh | sh
+```
+
+Place dotfiles:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://github.com/edfloreshz/config/blob/main/dotfiles/place.sh | sh
+```
