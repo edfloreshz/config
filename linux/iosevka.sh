@@ -6,7 +6,7 @@ wget https://github.com/be5invis/Iosevka/releases/download/v$RELEASE/ttf-iosevka
 
 unzip \*.zip
 
-sudo mkdir /usr/local/share/fonts/iosevka-term
+sudo mkdir -p /usr/local/share/fonts/iosevka-term
 A | sudo mv --force *.ttf /usr/local/share/fonts/iosevka-term/
 sudo chown -R root: /usr/local/share/fonts/iosevka-term
 sudo chmod 644 /usr/local/share/fonts/iosevka-term/*
