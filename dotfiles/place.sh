@@ -33,14 +33,8 @@ OPTIONS=(
     3 "Zsh"
     4 "Vim"
     5 "Xprofile"
-    6 "Rofi"
-    7 "Polybar"
-    8 "Waybar"
-    9 "LeftWM"
-    10 "Sway"
-    11 "Awesome"
-    12 "Git"
-    13 "Fish"
+    6 "Git"
+    7 "Fish"
 )
 
 while CHOICE=$(dialog --clear --backtitle "$BACKTITLE" --title "$TITLE" \
@@ -51,68 +45,38 @@ do
     case $CHOICE in
         1)
             echo "Placing alacritty files..."
-            cp .alacritty.yml $HOME
+            curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.alacritty.yml > $HOME/.alacritty.yml
             echo "Alacritty files placed in $HOME/.alacritty.yml"
             ;;
         2)
             echo "Placing bash files"
-            cp .bashrc $HOME
+            curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.bashrc > $HOME/.bashrc
             echo "Bash files placed in $HOME/.bashrc"
             ;;
         3)
             echo "Placing zsh files"
-            cp .zshrc $HOME
+	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.zshrc > $HOME/.zshrc
             echo "Zsh files placed in $HOME/.zshrc"
             ;;
         4)
             echo "Placing vim files"
-            cp .vimrc $HOME
+	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.vimrc > $HOME/.vimrc
             echo "Vim files placed in $HOME/.vimrc"
             ;;
         5)
             echo "Placing xprofile"
-            cp .xprofile $HOME
+	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.xprofile > $HOME/.xprofile
             echo "Xprofile placed in $HOME/.xprofile"
             ;;
         6)
-            echo "Placing rofi files"
-            cp -r .config/rofi/* $ROFI
-            echo "Rofi files placed in $ROFI"
-            ;;
-        7)
-            echo "Placing polybar files"
-            cp -r .config/polybar/* $POLYBAR
-            echo "Polybar files placed in $POLYBAR"
-            ;;
-        8)
-            echo "Placing waybar files"
-            cp -r .config/polybar/* $WAYBAR 
-            echo "Waybar files placed in $WAYBAR"
-            ;;
-        9)
-            echo "Placing left window manager files"
-            cp -r .config/leftwm/* $LEFTWM 
-            echo "LeftWM files placed in $LEFTWM"
-            ;;
-        10)
-            echo "Placing sway window manager files"
-            cp -r .config/sway/* $SWAY 
-            echo "SwayWM files placed in $SWAY"
-            ;;
-        11)
-            echo "Placing awesome window manager files"
-            cp -r .config/awesome/* $AWESOME 
-            echo "awesomeWM files placed in $AWESOME"
-            ;;
-        12)
             echo "Placing git configuration files"
-            cp .gitconfig $HOME
+	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.gitconfig > $HOME/.gitconfig
             echo "Git config file placed in $HOME/.gitconfig"
             ;;
         
-        13)
+        7)
 	    echo "Placing fish configuration files"
-	    cp -r .config/fish $CONFIG
+	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.config/fish/config.fish > $HOME/.config/fish/config.fish
 	    echo "Fish config placed in $CONFIG/fish"
 	    ;;
         *)
