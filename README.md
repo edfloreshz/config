@@ -18,5 +18,5 @@ curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloresh
 
 Place dotfiles:
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://github.com/edfloreshz/config/blob/main/dotfiles/place.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | sh
 ```
