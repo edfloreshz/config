@@ -1,6 +1,7 @@
 abbr -a e hx
 abbr -a o xdg-open
-abbr -a c cargo
+abbr -a c clear
+abbr -a cg cargo
 abbr -a cr cargo run
 abbr -a cb cargo build
 abbr -a ct cargo test
