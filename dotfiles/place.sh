@@ -23,7 +23,7 @@ AWESOME=$CONFIG/awesomei/
 HEIGHT=15
 WIDTH=40
 CHOICE_HEIGHT=4
-BACKTITLE="Dotfiles Selector"
+BACKTITLE="Dotfiles v0.1.0"
 TITLE="Dotfiles Selector"
 MENU="Pick which dotfiles to place in your system..."
 
