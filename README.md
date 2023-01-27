@@ -20,3 +20,8 @@ Place dotfiles:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | sh
 ```
+
+Install Rust:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
