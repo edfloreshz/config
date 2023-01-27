@@ -47,37 +47,44 @@ do
             echo "Placing alacritty files..."
             curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.alacritty.yml > $HOME/.alacritty.yml
             echo "Alacritty files placed in $HOME/.alacritty.yml"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         2)
             echo "Placing bash files"
             curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.bashrc > $HOME/.bashrc
             echo "Bash files placed in $HOME/.bashrc"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         3)
             echo "Placing zsh files"
 	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.zshrc > $HOME/.zshrc
             echo "Zsh files placed in $HOME/.zshrc"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         4)
             echo "Placing vim files"
 	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.vimrc > $HOME/.vimrc
             echo "Vim files placed in $HOME/.vimrc"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         5)
             echo "Placing xprofile"
 	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.xprofile > $HOME/.xprofile
             echo "Xprofile placed in $HOME/.xprofile"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         6)
             echo "Placing git configuration files"
 	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.gitconfig > $HOME/.gitconfig
             echo "Git config file placed in $HOME/.gitconfig"
+	    read -s -n 1 -p "Press any key to continue..."
             ;;
         
         7)
 	    echo "Placing fish configuration files"
 	    curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.config/fish/config.fish > $HOME/.config/fish/config.fish
 	    echo "Fish config placed in $CONFIG/fish"
+	    read -s -n 1 -p "Press any key to continue..."
 	    ;;
         *)
             break
