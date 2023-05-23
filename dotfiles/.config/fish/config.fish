@@ -1,4 +1,5 @@
-abbr -a e hx
+abbr -a e com.helix_editor.Helix
+abbr -a hx com.helix_editor.Helix
 abbr -a o xdg-open
 abbr -a c clear
 abbr -a cg cargo
