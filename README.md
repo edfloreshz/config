@@ -13,15 +13,15 @@ Configuration repositories for Arch Linux, KDE Plasma, Oh My Zsh, Vim, Tmux and 
 # Commands
 Install Iosevka Term:
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/linux/iosevka.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/linux/iosevka.sh | bash
 ```
 
 Place dotfiles:
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | bash
 ```
 
 Install Rust:
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
 ```
