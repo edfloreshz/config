@@ -1,8 +1,4 @@
-<p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Archlinux-icon-crystal-64.svg/1200px-Archlinux-icon-crystal-64.svg.png" height="100px">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Plasma-logo-monochrome.svg" height="100px">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/1022px-Vimlogo.svg.png" height="100px">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Alacritty_logo.svg/1200px-Alacritty_logo.svg.png" height="100px">
+<p align="center">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tux-simple.svg/154px-Tux-simple.svg.png" height="100px">
 </p>
 
@@ -24,4 +20,21 @@ curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloresh
 Install Rust:
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+```
+
+GPG:
+1. [Generate GPG Keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
+
+```
+// Remove existing signing key
+git config --unset user.signingkey
+
+// Find long signing key
+gpg --list-secret-keys --keyid-format=long
+
+// Add new signing key
+git config user.signingkey SECRETKEYLONGID
+
+// Tell git to automatically sign every commit
+git config commit.gpgsign true
 ```
