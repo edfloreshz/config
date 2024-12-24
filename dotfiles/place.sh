@@ -45,8 +45,8 @@ do
     case $CHOICE in
         1)
             echo "Placing alacritty files..."
-            curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.alacritty.yml > $HOME/.alacritty.yml
-            echo "Alacritty files placed in $HOME/.alacritty.yml"
+            curl -L https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.alacritty.toml > $HOME/.alacritty.toml
+            echo "Alacritty files placed in $HOME/.alacritty.toml"
 	    read -s -n 1 -p "Press any key to continue..."
             ;;
         2)
