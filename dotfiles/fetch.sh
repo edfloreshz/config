@@ -36,7 +36,7 @@ REPO_FISH=$REPO_CONFIG/fish
 # Dotfiles 
 
 ## Get user dotfiles.
-cp $HOME/{.gitconfig,.zshrc,.alacritty.yml,.bashrc,.vimrc,.xprofile,.tmux.conf} .
+cp $HOME/{.gitconfig,.zshrc,.alacritty.toml,.bashrc,.vimrc,.xprofile,.tmux.conf} .
 echo "Obtained dotfiles"
 
 # Rofi
