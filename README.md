@@ -4,9 +4,21 @@
 
 # Configuration Repository
 
-Configuration repositories for Arch Linux, KDE Plasma, Oh My Zsh, Vim, Tmux and Alacritty.
+Configuration steps for my system.
 
 # Commands
+Dependencies:
+```bash
+sudo apt install fish dialog libssl-dev just libxkbcommon-dev
+chsh -s /usr/bin/fish
+```
+
+Install Rust:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+cargo install devmode
+```
+
 Install Iosevka Term:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/linux/iosevka.sh | bash
@@ -17,24 +29,5 @@ Place dotfiles:
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | bash
 ```
 
-Install Rust:
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
-```
-
 GPG:
 1. [Generate GPG Keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
-
-```
-// Remove existing signing key
-git config --unset user.signingkey
-
-// Find long signing key
-gpg --list-secret-keys --keyid-format=long
-
-// Add new signing key
-git config user.signingkey SECRETKEYLONGID
-
-// Tell git to automatically sign every commit
-git config commit.gpgsign true
-```
