@@ -21,6 +21,7 @@ abbr -a gri git rebase -i
 abbr -a grc git rebase --continue
 
 set -U fish_user_paths /home/eduardo/.cargo/bin $fish_user_paths 
+set -U fish_user_paths /home/eduardo/.local/bin $fish_user_paths 
 
 if command -v paru > /dev/null
     abbr -a i paru -S
