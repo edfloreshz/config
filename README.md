@@ -2,32 +2,31 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tux-simple.svg/154px-Tux-simple.svg.png" height="100px">
 </p>
 
-# Configuration Repository
+# Configuration Scripts
+Configuration scripts to set up my development environment.
 
-Configuration steps for my system.
+## Dev Scripts
 
-# Commands
-Dependencies:
-```bash
-sudo apt install fish dialog libssl-dev just libxkbcommon-dev
-chsh -s /usr/bin/fish
-```
+| Description                        | Command                                      |
+|------------------------------------|----------------------------------------------|
+| Install and configure fish shell   | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/fish.sh \| bash` |
+| Set up .gitconfig                  | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/git.sh \| bash` |
+| Install Rust toolchain             | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/rust.sh \| bash` |
+| Install Go programming language    | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/go.sh \| bash` |
+| Install Helix text editor          | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/hx.sh \| bash` |
+| Set up Alacritty config            | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/dev/alacritty.sh \| bash` |
 
-Install Rust:
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
-cargo install devmode
-```
+## Fonts
 
-Install Iosevka Term:
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/linux/iosevka.sh | bash
-```
+| Description                        | Command                                      |
+|------------------------------------|----------------------------------------------|
+| Install Iosevka Term font          | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/fonts/iosevka-term.sh \| bash` |
 
-Place dotfiles:
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/place.sh | bash
-```
+## Systemd
 
-GPG:
+| Description                           | Command                                      |
+|---------------------------------------|----------------------------------------------|
+| Add Windows partition to systemd-boot | `curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/edfloreshz/config/refs/heads/main/systemd/systemd-boot-win.sh \| bash` |
+
+## GPG
 1. [Generate GPG Keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)

@@ -1,3 +1,42 @@
+set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $fish_user_paths
+
+if command -v apt > /dev/null
+    abbr -a i sudo apt install
+    abbr -a r sudo apt remove
+    abbr -a k sudo apt remove --purge
+    abbr -a f sudo apt update
+    abbr -a u sudo apt upgrade
+else if command -v dnf > /dev/null
+    abbr -a i sudo dnf install
+    abbr -a r sudo dnf remove
+    abbr -a f sudo dnf update
+    abbr -a u sudo dnf upgrade
+else if command -v brew > /dev/null
+    abbr -a i brew install
+    abbr -a r brew uninstall
+    abbr -a k brew uninstall --force
+    abbr -a f brew update
+    abbr -a u brew upgrade
+end
+
+if command -v exa > /dev/null
+    abbr -a l 'exa --git'
+    abbr -a ls 'exa --git'
+    abbr -a ll 'exa -l --git'
+    abbr -a lll 'exa -la --git'
+else
+    abbr -a l 'ls'
+    abbr -a ll 'ls -l'
+    abbr -a lll 'ls -la'
+end
+
+if command -v bat > /dev/null
+    abbr -a cat bat
+else
+    abbr -a cat cat
+end
+
 abbr -a o xdg-open
 abbr -a c clear
 abbr -a cg cargo
@@ -19,47 +58,3 @@ abbr -a gl git log --oneline
 abbr -a gr git rebase
 abbr -a gri git rebase -i
 abbr -a grc git rebase --continue
-
-set -U fish_user_paths /home/eduardo/.cargo/bin $fish_user_paths 
-set -U fish_user_paths /home/eduardo/.local/bin $fish_user_paths 
-
-if command -v paru > /dev/null
-    abbr -a i paru -S
-    abbr -a r paru -R
-    abbr -a k paru -Rscn
-    abbr -a u paru
-else if command -v pacman > /dev/null
-    abbr -a i sudo pacman -S
-    abbr -a r sudo pacman -R
-    abbr -a k sudo pacman -Rscn
-    abbr -a u sudo pacman -Syu
-else if command -v apt > /dev/null
-    abbr -a i sudo apt install
-    abbr -a r sudo apt remove
-    abbr -a k sudo apt remove --purge
-    abbr -a f sudo apt update
-    abbr -a u sudo apt upgrade
-else
-    abbr -a i sudo dnf install
-    abbr -a r sudo dnf remove
-    abbr -a f sudo dnf update
-    abbr -a u sudo dnf upgrade
-end
-
-if command -v exa > /dev/null
-    abbr -a l 'exa --git'
-    abbr -a ls 'exa --git'
-    abbr -a ll 'exa -l --git'
-    abbr -a lll 'exa -la --git'
-else 
-    abbr -a l 'ls'
-    abbr -a ll 'ls -l'
-    abbr -a lll 'ls -la'
-end
-
-if command -v bat > /dev/null
-    abbr -a cat bat
-else 
-    abbr -a cat cat
-end
-

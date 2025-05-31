@@ -1,4 +1,0 @@
-#!/bin/sh
-
-rofi -config ~/.config/rofi/passwd.rasi -dmenu -i -password -p "Sudo"
-
