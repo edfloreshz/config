@@ -26,7 +26,7 @@ fi
 
 # 3. Download config.fish from GitHub
 echo "Configuring fish shell with your dotfiles"
-mkdir -p "$HOME/.config/fish"
+fish
 curl -fsSL https://raw.githubusercontent.com/edfloreshz/config/main/dotfiles/.config/fish/config.fish -o "$HOME/.config/fish/config.fish"
 
 echo "Fish shell installed and configured! Please restart your terminal."
