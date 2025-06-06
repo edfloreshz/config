@@ -1,122 +1,54 @@
-[general]
 live_config_reload = true
 
-[terminal]
+[window]
+dimensions = { columns = 105, lines = 22 }
+padding = { x = 10, y = 5 }
+opacity = 0.90
+blur = true
 
-[cursor]
-style = "Block"
-
-[font]
-size = 12.0
-
-[font.bold]
-family = "Iosevka Term"
-style = "Bold"
-
-[font.bold_italic]
-family = "Iosevka Term"
-style = "Bold Italic"
-
-[font.italic]
-family = "Iosevka Term"
-style = "Italic"
-
-[font.normal]
-family = "Iosevka Term"
-style = "Regular"
-
-[font.offset]
-x = 1
-y = 1
+[shell]
+program = "/usr/bin/fish"
 
 [selection]
 save_to_clipboard = true
 
-[terminal.shell]
-program = "/usr/bin/fish"
+[cursor.style]
+shape = "Block"
 
-[window]
-opacity = 0.95
+[font]
+size = 12.0
+bold =        { family = "Iosevka Term", style = "Bold" }
+bold_italic = { family = "Iosevka Term", style = "Bold Italic" }
+italic =      { family = "Iosevka Term", style = "Italic" }
+normal =      { family = "Iosevka Term", style = "Regular" }
+offset =      { x = 1, y = 1 }
 
-[window.dimensions]
-columns = 105
-lines = 22
+[bell]
+animation = "EaseOutExpo"
+duration  = 0
+color     = "#C0C5CE"
+command   = { program = "notify-send", args = ["alacritty", "bell",] }
 
 [mouse]
-
-[[mouse.bindings]]
-action = "Copy"
-mouse = "Middle"
-
-[[mouse.bindings]]
-action = "Paste"
-mouse = "Right"
+hide_when_typing = true
+bindings = [
+  { mouse = "Middle", action = "Copy" },
+  { mouse = "Right",  action = "Paste" },
+]
 
 [keyboard]
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u0003"
-key = "C"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ClearHistory"
-key = "K"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "W"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "SearchForward"
-key = "F"
-mode = "~Search"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "SearchBackward"
-key = "B"
-mode = "~Search"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "Plus"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "NumpadAdd"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "Minus"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "NumpadSubtract"
-mods = "Control"
+bindings = [
+  { action = "Paste",             mods = "Alt",           key = "V" },
+  { action = "Copy",              mods = "Alt",           key = "C" },
+  { action = "ClearHistory",      mods = "Alt",           key = "K" },
+  { action = "SpawnNewInstance",  mods = "Alt",           key = "N" },
+  { action = "Quit",              mods = "Alt",           key = "W" },
+  { action = "Quit",              mods = "Alt",           key = "Q" },
+  { action = "SearchForward",     mods = "Alt",           key = "F",      mode = "~Search" },
+  { action = "SearchBackward",    mods = "Alt",           key = "B",      mode = "~Search" },
+  { action = "IncreaseFontSize",  mods = "Control",       key = "Plus" },
+  { action = "IncreaseFontSize",  mods = "Control",       key = "NumpadAdd" },
+  { action = "DecreaseFontSize",  mods = "Control",       key = "Minus" },
+  { action = "DecreaseFontSize",  mods = "Control",       key = "NumpadSubtract" },
+  { chars = "\u0003",             mods = "Control|Shift", key = "C" },
+]
