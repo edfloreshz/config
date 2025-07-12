@@ -18,6 +18,12 @@ else if command -v brew > /dev/null
     abbr -a k brew uninstall --force
     abbr -a f brew update
     abbr -a u brew upgrade
+else if command -v port > /dev/null
+    abbr -a i sudo port install
+    abbr -a r sudo port uninstall
+    abbr -a f sudo port outdated
+    abbr -a u sudo port upgrade outdated
+    abbr -a up sudo port selfupdate
 end
 
 if command -v exa > /dev/null
